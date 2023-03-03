@@ -3,23 +3,15 @@ use serenity::model::channel::Message;
 use serenity::model::gateway::Ready;
 use serenity::prelude::{EventHandler, Context};
 
-pub struct Handler;
+pub struct MarvinEventsHandler;
 
 #[async_trait]
-impl EventHandler for Handler {
+impl EventHandler for MarvinEventsHandler {
 
     // Set a handler to be called on the `message` event. This is called when a
     // message is created in a channel the bot has access to.
-    async fn message(&self, ctx: Context, msg: Message) {
-        if msg.content == "!ping" {
-            // Sending a message can fail, due to a network error, an
-            // authentication error, or lack of permissions to post in the
-            // channel, so log to stdout when some error happens, with a
-            // description of it.
-            if let Err(why) = msg.channel_id.say(&ctx.http, "Pong!").await {
-                println!("Error sending message: {:?}", why);
-            }
-        }
+    async fn message(&self, _ctx: Context, _msg: Message) {
+        
     }
 
     // Set a handler to be called on the `ready` event. This is called when a
